@@ -4,3 +4,5 @@ resource "aws_instance" "test" {
 
   tags = {
     Name = "HelloWorld"
+  }
+}
