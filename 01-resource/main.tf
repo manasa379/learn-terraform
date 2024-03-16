@@ -7,7 +7,7 @@ resource "aws_instance" "test" {
   }
 }
 
-resource "aws_route53_record" "test" {
+resource "aws_route53_record" "web" {
   zone_id = Z06848581UD2LTM8TKQW6
   name    = "test.devops155.online"
   type    = "A"
