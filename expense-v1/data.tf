@@ -9,5 +9,10 @@ data "aws_security_group" "sg" {
 }
 
 data "aws_route53_zone" "zone" {
-  name = "devops155.online"
+  name = var.zone_id
 }
+
+variable "zone_id" {
+  default = "devops155.online"
+}
+
