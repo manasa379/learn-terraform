@@ -8,7 +8,7 @@ resource "aws_instance" "frontend" {
 }
 
 resource "aws_route53_record" "frontend" {
-  zone_id = "Z06848581UD2LTM8TKQW6"
+  zone_id = data.aws_route53_zone.zone.zone_id
   name    = "frontend.devops155.online"
   type    = "A"
   ttl     = 30
@@ -25,7 +25,7 @@ resource "aws_instance" "backend" {
 }
 
 resource "aws_route53_record" "backend" {
-  zone_id = "Z06848581UD2LTM8TKQW6"
+  zone_id = data.aws_route53_zone.zone.zone_id
   name    = "backend.devops155.online"
   type    = "A"
   ttl     = 30
@@ -42,7 +42,7 @@ resource "aws_instance" "mysql" {
 }
 
 resource "aws_route53_record" "mysql" {
-  zone_id = "Z06848581UD2LTM8TKQW6"
+  zone_id = data.aws_route53_zone.zone.zone_id
   name    = "mysql.devops155.online"
   type    = "A"
   ttl     = 30
