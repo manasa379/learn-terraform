@@ -10,6 +10,6 @@ resource "null_resource" "example2" {
 echo hello-world
 ls
 cd
-
+EOF
   }
 }
