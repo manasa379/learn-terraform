@@ -15,6 +15,8 @@ resource "aws_route53_record" "frontend" {
   records = [aws_instance.frontend.private_ip]
 }
 resource "null_resource" "frontend" {
+  depends_on = [aws_route53_record.frontend]
+
   provisioner "local-exec" {
     command = <<EOF
 cd/home/centos/infra-ansible
@@ -24,6 +26,7 @@ ansible-playbook -i ${aws_instance.frontend.private_ip}, -e ansible_user=centos 
 EOF
   }
 }
+
 resource "aws_instance" "backend" {
   ami           = data.aws_ami.ami.image_id
   instance_type = "t3.micro"
@@ -42,6 +45,7 @@ resource "aws_route53_record" "backend" {
 }
 
 resource "null_resource" "backend" {
+  depends_on = [aws_route53_record.backend]
   provisioner "local-exec" {
     command = <<EOF
 cd/home/centos/infra-ansible
@@ -70,6 +74,8 @@ resource "aws_route53_record" "mysql" {
 }
 
 resource "null_resource" "mysql" {
+  depends_on = [aws_route53_record.mysql]
+
   provisioner "local-exec" {
     command = <<EOF
 cd/home/centos/infra-ansible
