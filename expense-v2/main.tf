@@ -1,7 +1,7 @@
 module "expense" {
   count = 3
   source = "./app-create"
-  component = "var.expense[count.index]"
+  component = var.expense[count.index]
 }
 
 variable "expense" {
