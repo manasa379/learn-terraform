@@ -1,6 +1,8 @@
 resource "null_resource" "example" {
   provisioner "local-exec" {
-    command = "echo Hello world"
+    command = "echo ${var.input}"
   }
 
 }
+
+variable "input" {}
